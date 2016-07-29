@@ -13,14 +13,19 @@ public class Main {
         int[] test4 = new int[]{5,4,3,2};
         int[] test5 = new int[]{5};
         int[] test6 = new int[]{};
+        int[] test7 = new int[]{3,2,6,7,1,4};
 
+//        System.out.print(stockProfit(test1));
+//        System.out.print(stockProfit(test2));
+//        System.out.print(stockProfit(test3));
+//        System.out.print(stockProfit(test4));
+//        System.out.print(stockProfit(test5));
+//        System.out.print(stockProfit(test6));
+        System.out.print(stockProfit(test7));
 
-
-
-        System.out.print(stockProfit(test1));
     }
 
-    // 3 2 6 7
+
     public static int stockProfit(int[] stockPrice) {
         int n = stockPrice.length;
 
@@ -33,14 +38,18 @@ public class Main {
         int profit = max - min;
 
         for(int i = 1 ; i < n; i++) {
+            //update min and max pointer if you run into a smaller element
             if(min > stockPrice[i]) {
-                min = stockPrice[i]; //min = 2
-                max = min;          //max = 2
+                min = stockPrice[i];
+                max = min;
             }
-
-            else if(min < stockPrice[i] && max < stockPrice[i]) {
-                profit = stockPrice[i] - min;  //profit = 4
-                max = stockPrice[i];    //max = 6
+            //update profit and max pointer if you run into a bigger element
+            else if(max < stockPrice[i] ) {
+                //update profit if price - min is higher than profit we've seen so far
+                if(stockPrice[i] - min > profit) {
+                    profit = stockPrice[i] - min;
+                }
+                max = stockPrice[i];
             }
         }
         return profit;

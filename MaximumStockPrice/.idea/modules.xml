@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/programming Challenge2.iml" filepath="$PROJECT_DIR$/programming Challenge2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reverseString/reverseString.iml" filepath="$PROJECT_DIR$/reverseString/reverseString.iml" />
     </modules>
   </component>
 </project>

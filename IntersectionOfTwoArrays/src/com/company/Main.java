@@ -41,7 +41,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[] test1 = intersection(new int[] {6}, new int[]{1,2,2,3,4,5});
+        int[] test1 = intersection(new int[] {1,2}, new int[]{1,2,2,3,4,5});
         for (int i = 0; i < test1.length; i++ ) {
             System.out.print(test1[i]);
         }

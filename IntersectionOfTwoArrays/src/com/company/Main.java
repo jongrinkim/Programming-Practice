@@ -13,43 +13,24 @@ public class Main {
 //    Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
 
     public static int[] intersection(int[] nums1, int[] nums2) {
-        int nums1Length = nums1.length;
-        int nums2Length = nums2.length;
+        HashSet<Integer> intersect = new HashSet<>();
+        HashSet<Integer> set_num1 = new HashSet<>();
 
-        int[] longerArray;
-        int[] shorterArray;
-
-        HashSet<Integer> result_hs = new HashSet<>();
-        HashSet<Integer> hs = new HashSet<Integer>();
-
-
-        if(nums1Length > nums2Length) {
-            longerArray = nums1;
-            shorterArray = nums2;
-        } else {
-            longerArray = nums2;
-            shorterArray = nums1;
+        for(int i = 0; i < nums1.length; i++) {
+            set_num1.add(nums1[i]);
         }
 
-        if(nums1Length == 0 || nums2Length == 0) {
-            return new int[0];
-        }
-
-        for(int i = 0; i < shorterArray.length; i++) {
-            hs.add(shorterArray[i]);
-        }
-
-        for(int i = 0; i< longerArray.length; i++) {
-            if(hs.contains(longerArray[i])){
-                result_hs.add(longerArray[i]);
+        for(int i = 0; i< nums2.length; i++) {
+            if(set_num1.contains(nums2[i])){
+                intersect.add(nums2[i]);
             }
         }
 
-        int[] result = new int[result_hs.size()];
+        int[] result = new int[intersect.size()];
 
         int i = 0;
-        for(int intersect : result_hs) {
-            result[i] = intersect;
+        for(int each : intersect) {
+            result[i] = each;
             i++;
         }
 

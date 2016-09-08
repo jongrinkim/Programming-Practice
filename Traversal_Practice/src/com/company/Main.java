@@ -1,5 +1,11 @@
 package com.company;
 
+import com.sun.source.tree.BinaryTree;
+
+import javax.swing.tree.TreeNode;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -26,6 +32,9 @@ public class Main {
         inOrderPrintNode(root); //A -> B -> C -> D -> E -> F -> G -> H -> I
         System.out.print("\n");
         postOrderPrintNode(root); //A -> C -> E -> D -> B -> H -> I -> G -> F
+        System.out.print("\n");
+
+        breadth(root); // F B G A D I C E H
     }
 
     public static boolean shouldBeErased(Node n) {
@@ -61,6 +70,20 @@ public class Main {
     }
     //Practice 3: Define a method to print each node (BFS: level-order) Using FIFO queue
 
+    public static void breadth(Node root) {
+        Queue<Node> queue = new LinkedList<>() ;
+        if (root == null)
+            return;
+        queue.clear();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            Node node = queue.remove();
+            System.out.print(node.value + " ");
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+        }
+
+    }
 
 
     //Practice 3: Delete a node

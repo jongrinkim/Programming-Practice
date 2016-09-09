@@ -3,8 +3,11 @@ package com.company;
 import com.sun.source.tree.BinaryTree;
 
 import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.jar.Pack200;
 
 public class Main {
 
@@ -35,6 +38,15 @@ public class Main {
         System.out.print("\n");
 
         breadth(root); // F B G A D I C E H
+
+        System.out.print("\n" + maxDepth(root) +"\n"); // maxDepth = 4
+
+        int x = -123 + 3;
+        char[] c = (x+"").toCharArray();
+        for(int i = 0; i<c.length; i++) {
+            System.out.print(c[i]);
+        }
+
     }
 
     public static boolean shouldBeErased(Node n) {
@@ -85,17 +97,53 @@ public class Main {
 
     }
 
-
-    //Practice 3: Delete a node
-
-
-    //depth of the tree
-
-    //height of the tree
+    //maxDepth of the tree
+    public static int maxDepth(Node root) {
+        if(root == null) {
+            return 0;
+        }
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
 
 
     //Practice 2: Define a method to print only the forest that shouldn't be erased
-    //should return A D F H
+    //should return A D F H -> order doesn't matter
+    //return in List<Node>
+    static boolean isParentNodeErased = true;
+    static List<Node> result = new ArrayList<>();
+
+//    public static List<Node> updatedForest(Node root) {
+//
+//        if(root == null) {
+//            return null;
+//        }
+//
+//        //add to list if !shouldBeErased and parent node is should be erased
+//        if(!shouldBeErased(root) && isParentNodeErased) {
+//            result.add(root);
+//        }
+//        if(shouldBeErased(root)) {
+//            isParentNodeErased = true;
+//        } else if (!shouldBeErased(root)) {
+//            isParentNodeErased = false;
+//        }
+//        updatedForest(root.left);
+//        updatedForest(root.right);
+////        if(shouldBeErased(root)) {
+////            return;
+////        }
+////        else if(!shouldBeErased(root) && !isParentNodeErased) {
+////            return;
+////        }
+//
+//        return result;
+//        //if shouldBeErased -> indicate that it's shouldBeErased
+//    }
+
+
+
+
+
 
     //Practice for the future: binary tree with integer values
         //insert a node into correct place
@@ -103,7 +151,7 @@ public class Main {
 
         //searching a node
 
-        //once you search a node -> delete
+        //once you search a node -> delete the node
 
         //non-recursive tree traversal -> iterator method (using stack)
 }

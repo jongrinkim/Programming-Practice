@@ -3,10 +3,7 @@ package com.company;
 import com.sun.source.tree.BinaryTree;
 
 import javax.swing.tree.TreeNode;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.jar.Pack200;
 
 public class Main {
@@ -44,8 +41,19 @@ public class Main {
         int x = -123 + 3;
         char[] c = (x+"").toCharArray();
         for(int i = 0; i<c.length; i++) {
-            System.out.print(c[i]);
+            System.out.print(c[i] + "\n");
         }
+
+        //Return updated Forest -> should return A D F H
+        updatedForest(root);
+        for(Node n : good_hs) {
+            System.out.print(n);
+        }
+
+
+        //Todo: QQQQWhat happen when you add a null to HashSet ? ??????
+        //HashSet<>
+        //Todo: Does adding a duplicate value into HashSet automatically being taken cae of?
 
     }
 
@@ -109,36 +117,44 @@ public class Main {
     //Practice 2: Define a method to print only the forest that shouldn't be erased
     //should return A D F H -> order doesn't matter
     //return in List<Node>
-    static boolean isParentNodeErased = true;
-    static List<Node> result = new ArrayList<>();
+    static HashSet<Node> good_hs = new HashSet<>();
+    static HashSet<Node> bad_hs = new HashSet<>();
 
-//    public static List<Node> updatedForest(Node root) {
-//
-//        if(root == null) {
-//            return null;
-//        }
-//
-//        //add to list if !shouldBeErased and parent node is should be erased
-//        if(!shouldBeErased(root) && isParentNodeErased) {
-//            result.add(root);
-//        }
-//        if(shouldBeErased(root)) {
-//            isParentNodeErased = true;
-//        } else if (!shouldBeErased(root)) {
-//            isParentNodeErased = false;
-//        }
-//        updatedForest(root.left);
-//        updatedForest(root.right);
-////        if(shouldBeErased(root)) {
-////            return;
-////        }
-////        else if(!shouldBeErased(root) && !isParentNodeErased) {
-////            return;
-////        }
-//
-//        return result;
-//        //if shouldBeErased -> indicate that it's shouldBeErased
-//    }
+    public static List<Node> updatedForest(Node root) {
+
+        if(root == null) {
+            return null;
+        }
+        if(!shouldBeErased(root)) {
+            if(bad_hs.contains(root)) {
+
+            } else {
+                good_hs.add(root);
+            }
+            if(root.left!=null) {
+                bad_hs.add(root.left);
+                updatedForest(root.left);
+            }
+            if(root.right!=null) {
+                bad_hs.add(root.right);
+                updatedForest(root.right);
+            }
+        }
+
+        if(shouldBeErased(root)) {
+            if(root.left!=null) {
+                good_hs.add(root.left);
+                updatedForest(root.left);
+            }
+            if(root.right!=null) {
+                good_hs.add(root.right);
+                updatedForest(root.right);
+            }
+
+        }
+        List list = new ArrayList<>(good_hs);
+        return list;
+    }
 
 
 

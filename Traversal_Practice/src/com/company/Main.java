@@ -47,14 +47,27 @@ public class Main {
         //Return updated Forest -> should return A D F H
         updatedForest(root);
         for(Node n : good_hs) {
-            System.out.print(n);
+            System.out.print(n + "\n");
         }
 
 
-        //Todo: QQQQWhat happen when you add a null to HashSet ? ??????
-        //HashSet<>
+        //Todo: What happen when you add a null to HashSet?
+        HashSet<String> practice = new HashSet<>();
+        practice.add(null);
+        practice.add("3" + "\n");
+        for(String s : practice) {
+            System.out.print(s);
+        }
         //Todo: Does adding a duplicate value into HashSet automatically being taken cae of?
-
+        HashSet<String> practice2 = new LinkedHashSet<>();
+        practice2.add("1");
+        practice2.add("3");
+        practice2.add("2");
+        practice2.add("3");
+        for(String s : practice2) {
+            System.out.print(s);
+        }
+        //Note: LinkedHashSet maintains the insertion order
     }
 
     public static boolean shouldBeErased(Node n) {

@@ -51,14 +51,14 @@ public class Main {
         }
 
 
-        //Todo: What happen when you add a null to HashSet?
+        //What happen when you add a null to HashSet? null will be added
         HashSet<String> practice = new HashSet<>();
         practice.add(null);
         practice.add("3" + "\n");
         for(String s : practice) {
             System.out.print(s);
         }
-        //Todo: Does adding a duplicate value into HashSet automatically being taken cae of?
+        //Does adding a duplicate value into HashSet automatically being taken cae of? Yes
         HashSet<String> practice2 = new LinkedHashSet<>();
         practice2.add("1");
         practice2.add("3");
@@ -68,6 +68,12 @@ public class Main {
             System.out.print(s);
         }
         //Note: LinkedHashSet maintains the insertion order
+        System.out.print("\n");
+
+
+
+        //mirror the tree
+        mirrorTree(root); //should return F G I H B D E C A
     }
 
     public static boolean shouldBeErased(Node n) {
@@ -169,8 +175,28 @@ public class Main {
         return list;
     }
 
+    //Mirror a tree
+    public static void mirrorTree(Node root) {
+        if(root == null) {
+            return;
+        }
+        Node temp = root.left; // null         //F
+        root.left = root.right; // I          //G B
+        root.right = temp;                   //I
 
-
+        System.out.print(root);   // <F G I
+        if(root.left!=null) {
+            mirrorTree(root.left);
+        }
+        if(root.right!=null) {
+            mirrorTree(root.right);
+        }
+    }
+//    Node root = new Node("F");                          //  F
+//    Node n1 = root.left = new Node("B");             //  B     G
+//    Node n2 = root.right = new Node("G");           // A   D      I
+//    //        C E    H
+//    Node n11 = n1.left = new Node("A");
 
 
 

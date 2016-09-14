@@ -192,21 +192,7 @@ public class Main {
             mirrorTree(root.right);
         }
     }
-//    Node root = new Node("F");                          //  F
-//    Node n1 = root.left = new Node("B");             //  B     G
-//    Node n2 = root.right = new Node("G");           // A   D      I
-//    //        C E    H
-//    Node n11 = n1.left = new Node("A");
 
 
 
-    //Practice for the future: binary tree with integer values
-        //insert a node into correct place
-        //https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html
-
-        //searching a node
-
-        //once you search a node -> delete the node
-
-        //non-recursive tree traversal -> iterator method (using stack)
 }

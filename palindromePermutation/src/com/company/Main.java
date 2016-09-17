@@ -34,9 +34,6 @@ public class Main {
             }
         }
 
-
-
-
         int twoCount = 0;
         int oneCount = 0;
         for(char c : ht.keySet()) {

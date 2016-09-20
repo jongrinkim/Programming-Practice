@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        //Todo: do we need to specify null at the end?
-        //1 -> 2 -> 3 -> 4 -> 5 -> 6->null
+        //Todo: do we need to specify null at the end for the linked list?
+        //1 -> 2 -> 3 -> 4 -> 5 -> 6->7->null
         Node head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
@@ -16,7 +16,7 @@ public class Main {
         head.next.next.next.next.next.next = new Node(7);
         head.next.next.next.next.next.next.next = null;
 
-        System.out.print(kthtolast(head, 1)); // should print 4
+        System.out.print(kthtolast(head, 3)); // should print 5
 
     }
 
@@ -46,7 +46,7 @@ public class Main {
         while(head.next != null) {
             jthFromHead--;
             if(jthFromHead <= 0) {
-                return head.data;
+                return head.next.data;
             }
             head = head.next;
         }

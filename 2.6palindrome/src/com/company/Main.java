@@ -22,6 +22,8 @@ public class Main {
 
         Node head5 = null;
 
+        Node n = reverseLinkedListRecursively(head1);
+
         //true case;
         System.out.print(isPalindrome(head2) + "\n"); //true
         //false case
@@ -34,7 +36,9 @@ public class Main {
         System.out.print(isPalindrome(head5) + "\n"); //false
 
 
-//        Node reverseHead = reverseLinkedList(head);
+//        reverseLinkedListRecursively(head1)
+
+//        Node reverseHead = reverseLinkedListIteratively(head);
 //
 //        while(reverseHead!=null) {
 //            System.out.print(reverseHead.val + "\n");
@@ -44,6 +48,8 @@ public class Main {
     }
 
     //Todo: how to make a singly linked list to doubly?
+    // you can change the data structure to have Node prev
+    // you can only do it by playing with the data structure
     //Todo: How to reverse Linked List recursively not iteratively?
 
     static int totalCount = 1;
@@ -55,7 +61,7 @@ public class Main {
             return false;
         }
 
-        Node reverseHead = reverseLinkedList(head);
+        Node reverseHead = reverseLinkedListIteratively(head);
         int counter = 1;
         while(head!=null && counter < totalCount/2) {
             counter++;
@@ -68,7 +74,7 @@ public class Main {
         return true;
     }
 
-    public static Node reverseLinkedList(Node head) {
+    public static Node reverseLinkedListIteratively(Node head) {
         Node next = head.next;
 
         head.next = null;
@@ -83,5 +89,22 @@ public class Main {
         }
 
         return head;
+    }
+
+    //reverse linked list recursively
+    public static Node reverseLinkedListRecursively(Node head) {
+        if(head == null || head.next == null) { //3.next == null
+            return head;   // return 3
+        }
+
+        //get second node
+        Node second = head.next; //second = 1   , 2  , 3
+        //set first's next to be null
+        head.next = null; //1.next = null;   2.next = null; 3.next = null
+
+        Node rest = reverseLinkedListRecursively(second); //rest =  3
+        second.next= head; //3.next = 2
+
+        return rest; //return 3
     }
 }

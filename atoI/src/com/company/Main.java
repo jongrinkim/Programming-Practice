@@ -9,6 +9,10 @@ public class Main {
         System.out.print(atoI("123") + "\n");
         System.out.print(atoI("-123") + "\n");
         System.out.print(atoI("0") + "\n");
+        String s = "123";
+
+        int a = s.charAt(0) - '0';
+        System.out.print(a + "");
 
     }
 
@@ -16,7 +20,10 @@ public class Main {
         int result = 0;
 
         for(int i = str.length(); i > 0; i--) {
-            int digit = charToInt(str.charAt(i-1));
+            int digit = str.charAt(i-1) - '0';
+            if(digit > 10 || digit < 0) {
+                digit = 0;
+            }
             result += digit * Math.pow(10,str.length()-i);
         }
 

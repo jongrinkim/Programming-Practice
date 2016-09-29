@@ -23,6 +23,8 @@ public class Main {
         int s_length = shortStr.length();
         int counter = 0;
 
+
+        //put shorter string into Hash Map (key -> Char, val -> count of the char)
         for(int i = 0 ; i < shortStr.length(); i++) {
             if(hm.containsKey(shortStr.charAt(i))) {
                 hm.put(shortStr.charAt(i), hm.get(shortStr.charAt(i))+1);
@@ -32,7 +34,11 @@ public class Main {
         }
         HashMap<Character, Integer> hm_c = new HashMap<Character, Integer>(hm);
 
+
+        //loop thru the longer string
         for(int i = 0; i < longStr.length(); i++) {
+            //if the hashmap containsKey the character and the value is bigger than 0, subtract 1 value for that in hashmap
+            //and subtract the length counter by 1 as well
             if(hm_c.containsKey(longStr.charAt(i)) && hm_c.get(longStr.charAt(i)) > 0 ) {
                 hm_c.put(longStr.charAt(i), hm_c.get(longStr.charAt(i))-1);
                 s_length--;
@@ -44,6 +50,7 @@ public class Main {
                 s_length = shortStr.length();
                 hm_c = new HashMap<>(hm);
             }
+            //when the length counter reaches 0, which means we just saw anagram of the short string in the long string
             if(s_length == 0) {
                 counter++;
             }

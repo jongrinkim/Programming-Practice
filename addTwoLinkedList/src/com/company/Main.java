@@ -56,7 +56,7 @@ public class Main {
                 if(l2!=null) {
                     l2 = l2.next;
                 }
-                
+
                 result = result.next = new ListNode(singleDigit);
 
             }
